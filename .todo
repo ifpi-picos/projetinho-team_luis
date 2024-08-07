@@ -5,7 +5,7 @@
     - O sistema agora possui a funcionalidade de listar o histórico de empréstimos por livro e por usuário.
 
   - Funcionalidades Principais
-    - [ ] Adicionar Novo Livro
+    - [X] Adicionar Novo Livro
       - Descrição: Permitir que o usuário adicione um novo livro à biblioteca.
       - Campos Necessários:
         - Título do livro
@@ -15,7 +15,7 @@
         - ID Único (gerado automaticamente)
       - Validação: Todos os campos são obrigatórios.
 
-    - [ ] Listar Livros
+    - [X] Listar Livros
       - Descrição: Exibir todos os livros disponíveis na biblioteca.
       - Informações Exibidas:
         - Título do livro
