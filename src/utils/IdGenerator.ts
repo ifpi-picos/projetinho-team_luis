@@ -4,7 +4,7 @@ import path from "path";
 
 export const IdGenerator = async () => {
     const books: Book[] = await fs.readJSON(
-        path.join(__dirname, "../data.json"),
+        path.join(__dirname, "../database/avaliableBooks.json"),
     );
 
     if (books.length < 1) {

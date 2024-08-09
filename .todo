@@ -24,7 +24,7 @@
         - Gênero
         - ID Único
 
-    - [ ] Editar Livro
+    - [X] Editar Livro
       - Descrição: Permitir que o usuário atualize as informações de um livro existente.
       - Campos Editáveis:
         - Título do livro
@@ -33,9 +33,9 @@
         - Gênero
       - Validação: Todos os campos editados devem seguir as mesmas regras de validação da criação de livros.
 
-    - [ ] Remover Livro
+    - [X] Remover Livro
       - Descrição: Permitir que o usuário exclua um livro da biblioteca.
-      - Confirmação: O sistema deve pedir confirmação antes de remover o livro.
+      - Confirmação: O sistema deve pedir confirmação antes de remover o livro. --> requisito de front end!!!
 
     - [ ] Registrar Empréstimo de Livro
       - Descrição: Permitir que o usuário registre o empréstimo de um livro.
