@@ -5,7 +5,7 @@ import path from "path";
 export const getDataService = async () => {
     try {
         const data = await fs.readJSON(
-            path.join(__dirname, "../database/avaliableBooks.json"),
+            path.join(__dirname, "../../database/avaliableBooks.json"),
         );
 
         return HttpHelper.ok(data);

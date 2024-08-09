@@ -13,7 +13,7 @@ export const updateBookService = async (
     if (title && auth && yearPublication && gender) {
         try {
             const books: Book[] = await fs.readJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
             );
 
             if (books.length < 1) {
@@ -33,7 +33,7 @@ export const updateBookService = async (
             books[indexBook] = bookUpdated;
 
             await fs.writeJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
                 books,
             );
 

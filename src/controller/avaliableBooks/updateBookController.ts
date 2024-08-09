@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { Book } from "../../models/BookInterface";
-import { updateBookService } from "../../services/borrowedBooks/updateBookService";
+import { updateBookService } from "../../services/avaliableBooks/updateBookService";
 
 export const updateBookController = async (req: Request, res: Response) => {
     const bookUpdated: Book = req.body;

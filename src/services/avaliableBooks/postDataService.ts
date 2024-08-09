@@ -21,13 +21,13 @@ export const postDataService = async (
 
         try {
             const books: Book[] = await fs.readJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
             );
 
             books.push(book);
 
             await fs.writeJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
                 books,
             );
             return HttpHelper.created();

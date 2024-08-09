@@ -7,7 +7,7 @@ export const deleteBookService = async (id: number) => {
     if (id) {
         try {
             const books: Book[] = await fs.readJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
             );
 
             const idBookToRemove = books.findIndex(
@@ -17,7 +17,7 @@ export const deleteBookService = async (id: number) => {
             books.splice(idBookToRemove, 1);
 
             await fs.writeJSON(
-                path.join(__dirname, "../database/avaliableBooks.json"),
+                path.join(__dirname, "../../database/avaliableBooks.json"),
                 books,
             );
 
