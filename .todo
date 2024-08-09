@@ -37,7 +37,7 @@
       - Descrição: Permitir que o usuário exclua um livro da biblioteca.
       - Confirmação: O sistema deve pedir confirmação antes de remover o livro. --> requisito de front end!!!
 
-    - [ ] Registrar Empréstimo de Livro
+    - [X] Registrar Empréstimo de Livro
       - Descrição: Permitir que o usuário registre o empréstimo de um livro.
       - Campos Necessários:
         - ID do Livro
@@ -45,7 +45,7 @@
         - Data de Empréstimo
       - Validação: Verifique se o livro está disponível para empréstimo (não emprestado).
 
-    - [ ] Registrar Devolução de Livro
+    - [X] Registrar Devolução de Livro
       - Descrição: Permitir que o usuário registre a devolução de um livro.
       - Campos Necessários:
         - ID do Livro

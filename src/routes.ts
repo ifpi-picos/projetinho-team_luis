@@ -4,6 +4,8 @@ import { postDataController } from "./controller/avaliableBooks/postDataControll
 import { updateBookController } from "./controller/avaliableBooks/updateBookController";
 import { deleteBookController } from "./controller/avaliableBooks/deleteBookController";
 import { loanBookController } from "./controller/borrowedBooks/loanBookController";
+import { returnBookController } from "./controller/borrowedBooks/returnBookController";
+import { getBorrowedBooksController } from "./controller/borrowedBooks/getBorrowedBooksController";
 
 export const router = Router();
 
@@ -13,3 +15,5 @@ router.patch("/:id", updateBookController);
 router.delete("/:id", deleteBookController);
 
 router.post("/receber-livro/:id", loanBookController);
+router.post("/devolver-livro/:id", returnBookController);
+router.get("/livros-emprestados", getBorrowedBooksController);
