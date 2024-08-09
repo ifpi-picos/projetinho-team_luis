@@ -1,4 +1,4 @@
-import * as HttpHelper from "../utils/HttpHelper";
+import * as HttpHelper from "../../utils/HttpHelper";
 import fs from "fs-extra";
 import path from "path";
 

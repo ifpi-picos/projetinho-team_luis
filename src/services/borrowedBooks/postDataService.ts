@@ -1,8 +1,8 @@
 import path from "path";
-import { Book } from "../models/BookInterface";
-import * as HttpHelper from "../utils/HttpHelper";
+import { Book } from "../../models/BookInterface";
+import * as HttpHelper from "../../utils/HttpHelper";
 import fs from "fs-extra";
-import { IdGenerator } from "../utils/IdGenerator";
+import { IdGenerator } from "../../utils/IdGenerator";
 
 export const postDataService = async (
     title: string,

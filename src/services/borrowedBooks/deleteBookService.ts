@@ -1,6 +1,6 @@
 import fs from "fs-extra";
-import * as HttpHelper from "../utils/HttpHelper";
-import { Book } from "../models/BookInterface";
+import * as HttpHelper from "../../utils/HttpHelper";
+import { Book } from "../../models/BookInterface";
 import path from "path";
 
 export const deleteBookService = async (id: number) => {

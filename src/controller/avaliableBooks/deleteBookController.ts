@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { deleteBookService } from "../services/deleteBookService";
+import { deleteBookService } from "../../services/borrowedBooks/deleteBookService";
 
 export const deleteBookController = async (req: Request, res: Response) => {
     const id: number = Number(req.params.id);

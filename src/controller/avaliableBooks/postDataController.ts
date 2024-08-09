@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { Book } from "../models/BookInterface";
-import { postDataService } from "../services/PostDataService";
+import { Book } from "../../models/BookInterface";
+import { postDataService } from "../../services/borrowedBooks/postDataService";
 
 export const postDataController = async (req: Request, res: Response) => {
     const book : Book = req.body;

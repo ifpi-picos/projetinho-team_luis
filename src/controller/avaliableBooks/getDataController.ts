@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getDataService } from "../services/getDataService";
+import { getDataService } from "../../services/borrowedBooks/getDataService";
 
 export const getDataController = async (req: Request, res: Response) => {
     const httpResponse = await getDataService();

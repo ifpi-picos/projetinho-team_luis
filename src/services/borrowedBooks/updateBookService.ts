@@ -1,5 +1,5 @@
-import { Book } from "../models/BookInterface";
-import * as HttpHelper from "../utils/HttpHelper";
+import { Book } from "../../models/BookInterface";
+import * as HttpHelper from "../../utils/HttpHelper";
 import fs from "fs-extra";
 import path from "path";
 

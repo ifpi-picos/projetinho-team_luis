@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getDataController } from "./controller/getDataController";
-import { postDataController } from "./controller/postDataController";
-import { updateBookController } from "./controller/updateBookController";
-import { deleteBookController } from "./controller/deleteBookController";
+import { getDataController } from "./controller/avaliableBooks/getDataController";
+import { postDataController } from "./controller/avaliableBooks/postDataController";
+import { updateBookController } from "./controller/avaliableBooks/updateBookController";
+import { deleteBookController } from "./controller/avaliableBooks/deleteBookController";
 
 export const router = Router();
 
