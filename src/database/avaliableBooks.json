@@ -1,1 +1,1 @@
-[{"id":6,"title":"Filme Updated 2","auth":"Autor Updated","yearPublication":2005,"gender":"updated"},{"id":7,"title":"filme 3","auth":"autor 3","yearPublication":2000,"gender":"terror"},{"id":8,"title":"filme 4","auth":"autor 4","yearPublication":2000,"gender":"terror"}]
+[{"id":1,"title":"livro 1","auth":"autor 1","yearPublication":2000,"gender":"terror","borrowed":true},{"id":2,"title":"livro 2","auth":"autor 2","yearPublication":2000,"gender":"terror","borrowed":true}]

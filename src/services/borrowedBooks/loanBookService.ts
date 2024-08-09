@@ -26,6 +26,10 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 return HttpHelper.noContent();
             }
 
+            if (avaliableBook.borrowed === true) {
+                return HttpHelper.noContent()
+            }
+
             const borrowedBook: BorrowedBook = {
                 id,
                 nameUser,
@@ -37,7 +41,8 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 gender: avaliableBook.gender,
             };
 
-            avaliableBooks.splice(indexAvaliableBook, 1);
+            avaliableBooks[indexAvaliableBook].borrowed = true
+
             borrowedBooks.push(borrowedBook);
 
             await fs.writeJSON(

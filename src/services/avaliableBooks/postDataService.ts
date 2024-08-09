@@ -17,6 +17,7 @@ export const postDataService = async (
             auth,
             yearPublication,
             gender,
+            borrowed: false,
         };
 
         try {

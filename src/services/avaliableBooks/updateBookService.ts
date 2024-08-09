@@ -28,6 +28,7 @@ export const updateBookService = async (
                 auth,
                 yearPublication,
                 gender,
+                borrowed: false,
             };
 
             books[indexBook] = bookUpdated;

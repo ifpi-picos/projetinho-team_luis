@@ -52,7 +52,7 @@
         - Dados de Devolução
       - Validação: Verifique se o livro está emprestado.
 
-    - [ ] Listar Livros Emprestados
+    - [X] Listar Livros Emprestados
       - Descrição: Exibir todos os livros que estão atualmente emprestados.
       - Informações Exibidas:
         - Título do livro
