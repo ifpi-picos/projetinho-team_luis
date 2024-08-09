@@ -4,6 +4,7 @@ import { Book } from "../../models/BookInterface";
 import * as HttpHelper from "../../utils/HttpHelper";
 import { BorrowedBook } from "../../models/BorrowedBookInterface";
 import { loanDate, returnDate } from "../../utils/dateGenerator";
+import { LoanInterface } from "../../models/LoanInterface";
 
 export const loanBookService = async (nameUser: string, id: number) => {
     if (nameUser && id) {
@@ -14,6 +15,9 @@ export const loanBookService = async (nameUser: string, id: number) => {
             const borrowedBooks: BorrowedBook[] = await fs.readJSON(
                 path.join(__dirname, "../../database/borrowedBooks.json"),
             );
+            const loanData: LoanInterface[] = await fs.readJSON(
+                path.join(__dirname, "../../database/loanData.json"),
+            );
 
             const indexAvaliableBook = avaliableBooks.findIndex(
                 (book: Book) => book.id === id,
@@ -22,12 +26,8 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 (book: Book) => book.id === id,
             );
 
-            if (indexAvaliableBook === -1 || !avaliableBook) {
+            if (indexAvaliableBook === -1 || !avaliableBook || avaliableBook.borrowed === true) {
                 return HttpHelper.noContent();
-            }
-
-            if (avaliableBook.borrowed === true) {
-                return HttpHelper.noContent()
             }
 
             const borrowedBook: BorrowedBook = {
@@ -41,7 +41,14 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 gender: avaliableBook.gender,
             };
 
-            avaliableBooks[indexAvaliableBook].borrowed = true
+            const loanHistoric: LoanInterface = {
+                idBook: id,
+                nameUser,
+                loanDate: loanDate(),
+                returnDate: returnDate()
+            };
+
+            avaliableBooks[indexAvaliableBook].borrowed = true;
 
             borrowedBooks.push(borrowedBook);
 
@@ -55,7 +62,7 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 borrowedBooks,
             );
 
-            return HttpHelper.ok('Livro Recebido!')
+            return HttpHelper.ok("Livro Recebido!");
         } catch (error) {
             console.log(error);
             return HttpHelper.internalServerError();

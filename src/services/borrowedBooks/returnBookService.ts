@@ -16,6 +16,9 @@ export const returnBookService = async (
             const borrowedBooks: BorrowedBook[] = await fs.readJSON(
                 path.join(__dirname, "../../database/borrowedBooks.json"),
             );
+            const avaliableBooks: Book[] = await fs.readJSON(
+                path.join(__dirname, "../../database/avaliableBooks.json"),
+            );
 
             const returnBook: BorrowedBook | undefined = borrowedBooks.find(
                 (book: BorrowedBook) =>
@@ -33,8 +36,13 @@ export const returnBookService = async (
                 return HttpHelper.notFound();
             }
 
+            avaliableBooks[idReturnBook].borrowed = false;
             borrowedBooks.splice(idReturnBook, 1);
 
+            await fs.writeJSON(
+                path.join(__dirname, "../../database/avaliableBooks.json"),
+                avaliableBooks,
+            );
             await fs.writeJSON(
                 path.join(__dirname, "../../database/borrowedBooks.json"),
                 borrowedBooks,

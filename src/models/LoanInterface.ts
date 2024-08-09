@@ -1,5 +1,6 @@
 export interface LoanInterface {
-    userName: string;
+    idBook: number;
+    nameUser: string;
     loanDate: string;
     returnDate: string;
 }

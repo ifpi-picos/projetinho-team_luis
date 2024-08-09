@@ -1,1 +1,1 @@
-[{"id":1,"title":"livro 1","auth":"autor 1","yearPublication":2000,"gender":"terror","borrowed":true},{"id":2,"title":"livro 2","auth":"autor 2","yearPublication":2000,"gender":"terror","borrowed":true}]
+[{"id":1,"title":"livro 1","auth":"autor 1","yearPublication":2000,"gender":"terror","borrowed":false},{"id":2,"title":"livro 2","auth":"autor 2","yearPublication":2000,"gender":"terror","borrowed":false},{"id":3,"title":"livro ","auth":"autor 3","yearPublication":2000,"gender":"terror","borrowed":false}]
