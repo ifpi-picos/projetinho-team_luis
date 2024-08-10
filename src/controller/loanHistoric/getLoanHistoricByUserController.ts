@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { getLoanDataByUserService } from "../../services/borrowedBooks/getLoanDataByUserService";
+import { getLoanDataByUserService } from "../../services/loanHistoric/getLoanHistoricByUserService";
 
-export const getLoanDataByUserController = async (
+export const getLoanHistoricByUserController = async (
     req: Request,
     res: Response,
 ) => {

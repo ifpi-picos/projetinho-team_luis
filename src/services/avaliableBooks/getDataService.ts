@@ -1,12 +1,9 @@
 import * as HttpHelper from "../../utils/HttpHelper";
-import fs from "fs-extra";
-import path from "path";
+import * as GetJson from "../../utils/GetJson";
 
 export const getDataService = async () => {
     try {
-        const data = await fs.readJSON(
-            path.join(__dirname, "../../database/avaliableBooks.json"),
-        );
+        const data = await GetJson.GetAvaliableBooksJson()
 
         return HttpHelper.ok(data);
     } catch (error) {

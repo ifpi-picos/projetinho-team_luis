@@ -1,8 +1,8 @@
-import path from "path";
 import { Book } from "../../models/BookInterface";
 import * as HttpHelper from "../../utils/HttpHelper";
-import fs from "fs-extra";
 import { IdGenerator } from "../../utils/IdGenerator";
+import * as GetJson from "../../utils/GetJson";
+import * as SetJson from "../../utils/SetJson";
 
 export const postDataService = async (
     title: string,
@@ -11,26 +11,22 @@ export const postDataService = async (
     gender: string,
 ) => {
     if (title && auth && yearPublication && gender) {
-        const book: Book = {
-            id: await IdGenerator(),
-            title,
-            auth,
-            yearPublication,
-            gender,
-            borrowed: false,
-        };
-
         try {
-            const books: Book[] = await fs.readJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-            );
+            const books: Book[] = await GetJson.GetAvaliableBooksJson();
+
+            const book: Book = {
+                id: await IdGenerator(),
+                title,
+                auth,
+                yearPublication,
+                gender,
+                borrowed: false,
+            };
 
             books.push(book);
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-                books,
-            );
+            await SetJson.SetAvaliableBooksJson(books);
+
             return HttpHelper.created();
         } catch (error) {
             console.log(error);

@@ -1,13 +1,10 @@
-import fs from "fs-extra";
-import path from "path";
 import { BorrowedBook } from "../../models/BorrowedBookInterface";
 import * as HttpHelper from "../../utils/HttpHelper";
+import * as GetJson from "../../utils/GetJson";
 
 export const getBorrowedBooksService = async () => {
     try {
-        const borrowedBooks: BorrowedBook[] = await fs.readJSON(
-            path.join(__dirname, "../../database/borrowedBooks.json"),
-        );
+        const borrowedBooks: BorrowedBook[] = await GetJson.GetBorrowedBooksJson()
 
         if (borrowedBooks.length < 1) {
             return HttpHelper.noContent()

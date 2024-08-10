@@ -1,8 +1,8 @@
-import fs from "fs-extra";
 import * as HttpHelper from "../../utils/HttpHelper";
-import path from "path";
 import { Book } from "../../models/BookInterface";
 import { BorrowedBook } from "../../models/BorrowedBookInterface";
+import * as GetJson from "../../utils/GetJson";
+import * as SetJson from "../../utils/SetJson";
 
 export const returnBookService = async (
     id: number,
@@ -12,12 +12,11 @@ export const returnBookService = async (
 ) => {
     if (id && nameUser && loanDate && returnDate) {
         try {
-            const borrowedBooks: BorrowedBook[] = await fs.readJSON(
-                path.join(__dirname, "../../database/borrowedBooks.json"),
-            );
-            const avaliableBooks: Book[] = await fs.readJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-            );
+            const avaliableBooks: Book[] =
+                await GetJson.GetAvaliableBooksJson();
+
+            const borrowedBooks: BorrowedBook[] =
+                await GetJson.GetBorrowedBooksJson();
 
             const returnBook: BorrowedBook | undefined = borrowedBooks.find(
                 (book: BorrowedBook) =>
@@ -35,17 +34,11 @@ export const returnBookService = async (
                 return HttpHelper.notFound();
             }
 
-            avaliableBooks[idReturnBook].borrowed = false;
+            avaliableBooks[id - 1].borrowed = false;
             borrowedBooks.splice(idReturnBook, 1);
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-                avaliableBooks,
-            );
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/borrowedBooks.json"),
-                borrowedBooks,
-            );
+            await SetJson.SetAvaliableBooksJson(avaliableBooks);
+            await SetJson.SetBorrowedBooksJson(borrowedBooks);
 
             return HttpHelper.ok("Livro Devolvido!");
         } catch (error) {

@@ -1,4 +1,4 @@
-import { LoanInterface } from "./LoanInterface";
+import { LoanInterface } from "./LoanHistoricInterface";
 
 export interface Book {
     id: number; //unico e gerado automaticamente

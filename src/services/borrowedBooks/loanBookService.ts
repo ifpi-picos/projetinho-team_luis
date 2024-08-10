@@ -1,27 +1,27 @@
-import fs from "fs-extra";
-import path from "path";
 import { Book } from "../../models/BookInterface";
 import * as HttpHelper from "../../utils/HttpHelper";
 import { BorrowedBook } from "../../models/BorrowedBookInterface";
 import { loanDate, returnDate } from "../../utils/dateGenerator";
-import { LoanInterface } from "../../models/LoanInterface";
+import { LoanInterface } from "../../models/LoanHistoricInterface";
+import * as GetJson from "../../utils/GetJson";
+import * as SetJson from "../../utils/SetJson";
 
 export const loanBookService = async (nameUser: string, id: number) => {
     if (nameUser && id) {
         try {
-            const avaliableBooks: Book[] = await fs.readJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-            );
-            const borrowedBooks: BorrowedBook[] = await fs.readJSON(
-                path.join(__dirname, "../../database/borrowedBooks.json"),
-            );
-            const loanData: LoanInterface[] = await fs.readJSON(
-                path.join(__dirname, "../../database/loanData.json"),
-            );
+            const avaliableBooks: Book[] =
+                await GetJson.GetAvaliableBooksJson();
+
+            const borrowedBooks: BorrowedBook[] =
+                await GetJson.GetBorrowedBooksJson();
+
+            const loanHistoric: LoanInterface[] =
+                await GetJson.GetLoamHistoricJson();
 
             const indexAvaliableBook = avaliableBooks.findIndex(
                 (book: Book) => book.id === id,
             );
+
             const avaliableBook = avaliableBooks.find(
                 (book: Book) => book.id === id,
             );
@@ -45,7 +45,7 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 gender: avaliableBook.gender,
             };
 
-            const loanHistoric: LoanInterface = {
+            const loanHistoricData: LoanInterface = {
                 idBook: id,
                 nameUser,
                 loanDate: loanDate(),
@@ -54,23 +54,14 @@ export const loanBookService = async (nameUser: string, id: number) => {
 
             avaliableBooks[indexAvaliableBook].borrowed = true;
 
-            loanData.push(loanHistoric)
+            loanHistoric.push(loanHistoricData);
             borrowedBooks.push(borrowedBook);
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-                avaliableBooks,
-            );
+            await SetJson.SetAvaliableBooksJson(avaliableBooks);
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/borrowedBooks.json"),
-                borrowedBooks,
-            );
+            await SetJson.SetBorrowedBooksJson(borrowedBooks);
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/loanData.json"),
-                loanData,
-            );
+            await SetJson.SetLoamHistoricJson(loanHistoric);
 
             return HttpHelper.ok("Livro Recebido!");
         } catch (error) {

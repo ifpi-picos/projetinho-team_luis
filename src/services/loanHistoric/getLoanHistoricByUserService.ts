@@ -1,13 +1,10 @@
-import fs from "fs-extra";
-import path from "path";
 import * as HttpHelper from "../../utils/HttpHelper";
-import { LoanInterface } from "../../models/LoanInterface";
+import { LoanInterface } from "../../models/LoanHistoricInterface";
+import * as GetJson from "../../utils/GetJson";
 
 export const getLoanDataByUserService = async (nameUser: string) => {
     try {
-        const data: LoanInterface[] = await fs.readJSON(
-            path.join(__dirname, "../../database/loanData.json"),
-        );
+        const data: LoanInterface[] = await GetJson.GetLoamHistoricJson()
 
         const historicLoanBook = data.filter(
             (data: LoanInterface) => data.nameUser === nameUser,

@@ -6,8 +6,8 @@ import { deleteBookController } from "./controller/avaliableBooks/deleteBookCont
 import { loanBookController } from "./controller/borrowedBooks/loanBookController";
 import { returnBookController } from "./controller/borrowedBooks/returnBookController";
 import { getBorrowedBooksController } from "./controller/borrowedBooks/getBorrowedBooksController";
-import { getloanDataController } from "./controller/borrowedBooks/getLoanDataByBooksController";
-import { getLoanDataByUserController } from "./controller/borrowedBooks/getLoanDataByUserController";
+import { getloanHistoricByBookController } from "./controller/loanHistoric/getLoanHistoricByBooksController";
+import { getLoanHistoricByUserController } from "./controller/loanHistoric/getLoanHistoricByUserController";
 
 export const router = Router();
 
@@ -19,5 +19,5 @@ router.delete("/:id", deleteBookController);
 router.post("/receber-livro/:id", loanBookController);
 router.post("/devolver-livro/:id", returnBookController);
 router.get("/livros-emprestados", getBorrowedBooksController);
-router.get("/dados-livro/:id", getloanDataController);
-router.get("/dados-user/:nameUser", getLoanDataByUserController);
+router.get("/dados-livro/:id", getloanHistoricByBookController);
+router.get("/dados-user/:nameUser", getLoanHistoricByUserController);

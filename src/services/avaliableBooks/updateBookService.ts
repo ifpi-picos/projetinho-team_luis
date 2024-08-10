@@ -1,9 +1,7 @@
 import { Book } from "../../models/BookInterface";
 import * as HttpHelper from "../../utils/HttpHelper";
-import fs from "fs-extra";
-import path from "path";
-
-//quando atualizar não mudar o borrowed
+import * as GetJson from "../../utils/GetJson";
+import * as SetJson from "../../utils/SetJson";
 
 export const updateBookService = async (
     id: number,
@@ -14,9 +12,7 @@ export const updateBookService = async (
 ) => {
     if (title && auth && yearPublication && gender) {
         try {
-            const books: Book[] = await fs.readJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-            );
+            const books: Book[] = await GetJson.GetAvaliableBooksJson();
 
             if (books.length < 1) {
                 return HttpHelper.noContent();
@@ -30,15 +26,12 @@ export const updateBookService = async (
                 auth,
                 yearPublication,
                 gender,
-                borrowed: false,
+                borrowed: books[indexBook].borrowed,
             };
 
             books[indexBook] = bookUpdated;
 
-            await fs.writeJSON(
-                path.join(__dirname, "../../database/avaliableBooks.json"),
-                books,
-            );
+            await SetJson.SetAvaliableBooksJson(books);
 
             return HttpHelper.created();
         } catch (error) {
