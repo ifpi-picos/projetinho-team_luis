@@ -3,7 +3,6 @@ import * as HttpHelper from "../../utils/HttpHelper";
 import path from "path";
 import { Book } from "../../models/BookInterface";
 import { BorrowedBook } from "../../models/BorrowedBookInterface";
-import { IdGenerator } from "../../utils/IdGenerator";
 
 export const returnBookService = async (
     id: number,

@@ -6,6 +6,7 @@ import { deleteBookController } from "./controller/avaliableBooks/deleteBookCont
 import { loanBookController } from "./controller/borrowedBooks/loanBookController";
 import { returnBookController } from "./controller/borrowedBooks/returnBookController";
 import { getBorrowedBooksController } from "./controller/borrowedBooks/getBorrowedBooksController";
+import { getloanDataController } from "./controller/borrowedBooks/getLoanDataByBooksController";
 
 export const router = Router();
 
@@ -17,3 +18,4 @@ router.delete("/:id", deleteBookController);
 router.post("/receber-livro/:id", loanBookController);
 router.post("/devolver-livro/:id", returnBookController);
 router.get("/livros-emprestados", getBorrowedBooksController);
+router.get("/dados-emprestimos/:id", getloanDataController);

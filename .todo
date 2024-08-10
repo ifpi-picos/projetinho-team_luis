@@ -61,7 +61,7 @@
         - Data de Empréstimo
         - ID Único
 
-    - [ ] Listar Histórico de Empréstimos por Livro
+    - [X] Listar Histórico de Empréstimos por Livro
       - Descrição: Exibir o histórico de empréstimos de um livro específico.
       - Campos Necessários:
         - ID do Livro

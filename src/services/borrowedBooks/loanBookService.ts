@@ -26,7 +26,11 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 (book: Book) => book.id === id,
             );
 
-            if (indexAvaliableBook === -1 || !avaliableBook || avaliableBook.borrowed === true) {
+            if (
+                indexAvaliableBook === -1 ||
+                !avaliableBook ||
+                avaliableBook.borrowed === true
+            ) {
                 return HttpHelper.noContent();
             }
 
@@ -45,11 +49,12 @@ export const loanBookService = async (nameUser: string, id: number) => {
                 idBook: id,
                 nameUser,
                 loanDate: loanDate(),
-                returnDate: returnDate()
+                returnDate: returnDate(),
             };
 
             avaliableBooks[indexAvaliableBook].borrowed = true;
 
+            loanData.push(loanHistoric)
             borrowedBooks.push(borrowedBook);
 
             await fs.writeJSON(
@@ -60,6 +65,11 @@ export const loanBookService = async (nameUser: string, id: number) => {
             await fs.writeJSON(
                 path.join(__dirname, "../../database/borrowedBooks.json"),
                 borrowedBooks,
+            );
+
+            await fs.writeJSON(
+                path.join(__dirname, "../../database/loanData.json"),
+                loanData,
             );
 
             return HttpHelper.ok("Livro Recebido!");
