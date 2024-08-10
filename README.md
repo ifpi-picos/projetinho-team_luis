@@ -68,15 +68,14 @@ projetinho-team_luis
 
 <p>Clone o repositório e instale as dependências:</p>
 
-<pre><code>
-git clone "URL_DO_REPOSITORIO"
+<pre><code>git clone "URL_DO_REPOSITORIO"
 cd projetinho-team_luis
 npm install
 </code></pre>
 
 <p>OBS: Você deve criar um arquivo chamado .env e colocar o seguinte código:</p>
-<pre><code>
-PORT=3000
+
+<pre><code>PORT=3000
 </code></pre>
 
 <h3>Executando o Projeto</h3>
