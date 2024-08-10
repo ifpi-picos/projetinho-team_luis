@@ -70,7 +70,7 @@
         - Data de Empréstimo
         - Dados de Devolução (se aplicável)
 
-    - [ ] Listar Histórico de Empréstimos por Usuário
+    - [X] Listar Histórico de Empréstimos por Usuário
       - Descrição: Exibir o histórico de empréstimos de um usuário específico.
       - Campos Necessários:
         - Nome do Usuário

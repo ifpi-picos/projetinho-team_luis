@@ -7,6 +7,7 @@ import { loanBookController } from "./controller/borrowedBooks/loanBookControlle
 import { returnBookController } from "./controller/borrowedBooks/returnBookController";
 import { getBorrowedBooksController } from "./controller/borrowedBooks/getBorrowedBooksController";
 import { getloanDataController } from "./controller/borrowedBooks/getLoanDataByBooksController";
+import { getLoanDataByUserController } from "./controller/borrowedBooks/getLoanDataByUserController";
 
 export const router = Router();
 
@@ -18,4 +19,5 @@ router.delete("/:id", deleteBookController);
 router.post("/receber-livro/:id", loanBookController);
 router.post("/devolver-livro/:id", returnBookController);
 router.get("/livros-emprestados", getBorrowedBooksController);
-router.get("/dados-emprestimos/:id", getloanDataController);
+router.get("/dados-livro/:id", getloanDataController);
+router.get("/dados-user/:nameUser", getLoanDataByUserController);
