@@ -1,0 +1,81 @@
+- Sistema de Biblioteca
+  - Descrição Geral
+    - O Sistema de Biblioteca Online permite aos usuários gerenciar uma biblioteca virtual.
+    - O sistema inclui funcionalidades de adicionar, visualizar, editar e remover livros, além de registrar empréstimos e devoluções.
+    - O sistema agora possui a funcionalidade de listar o histórico de empréstimos por livro e por usuário.
+
+  - Funcionalidades Principais
+    - [X] Adicionar Novo Livro
+      - Descrição: Permitir que o usuário adicione um novo livro à biblioteca.
+      - Campos Necessários:
+        - Título do livro
+        - Autor
+        - Ano de Publicação
+        - Gênero
+        - ID Único (gerado automaticamente)
+      - Validação: Todos os campos são obrigatórios.
+
+    - [X] Listar Livros
+      - Descrição: Exibir todos os livros disponíveis na biblioteca.
+      - Informações Exibidas:
+        - Título do livro
+        - Autor
+        - Ano de Publicação
+        - Gênero
+        - ID Único
+
+    - [X] Editar Livro
+      - Descrição: Permitir que o usuário atualize as informações de um livro existente.
+      - Campos Editáveis:
+        - Título do livro
+        - Autor
+        - Ano de Publicação
+        - Gênero
+      - Validação: Todos os campos editados devem seguir as mesmas regras de validação da criação de livros.
+
+    - [X] Remover Livro
+      - Descrição: Permitir que o usuário exclua um livro da biblioteca.
+      - Confirmação: O sistema deve pedir confirmação antes de remover o livro. --> requisito de front end!!!
+
+    - [X] Registrar Empréstimo de Livro
+      - Descrição: Permitir que o usuário registre o empréstimo de um livro.
+      - Campos Necessários:
+        - ID do Livro
+        - Nome do Usuário
+        - Data de Empréstimo
+      - Validação: Verifique se o livro está disponível para empréstimo (não emprestado).
+
+    - [X] Registrar Devolução de Livro
+      - Descrição: Permitir que o usuário registre a devolução de um livro.
+      - Campos Necessários:
+        - ID do Livro
+        - Dados de Devolução
+      - Validação: Verifique se o livro está emprestado.
+
+    - [X] Listar Livros Emprestados
+      - Descrição: Exibir todos os livros que estão atualmente emprestados.
+      - Informações Exibidas:
+        - Título do livro
+        - Autor
+        - Nome do Usuário
+        - Data de Empréstimo
+        - ID Único
+
+    - [X] Listar Histórico de Empréstimos por Livro
+      - Descrição: Exibir o histórico de empréstimos de um livro específico.
+      - Campos Necessários:
+        - ID do Livro
+      - Informações Exibidas:
+        - Nome do Usuário
+        - Data de Empréstimo
+        - Dados de Devolução (se aplicável)
+
+    - [X] Listar Histórico de Empréstimos por Usuário
+      - Descrição: Exibir o histórico de empréstimos de um usuário específico.
+      - Campos Necessários:
+        - Nome do Usuário
+      - Informações Exibidas:
+        - Título do livro
+        - Autor
+        - Data de Empréstimo
+        - Dados de Devolução (se aplicável)
